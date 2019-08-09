@@ -1,4 +1,4 @@
-# 基于angular cli 8 的后台管理系统
+# 基于angular cli 、ng-alain、 ng-zorro的后台管理系统
 
 本项目为个人练习angular cli搭建,仅供参考学习。
 ## Development server
