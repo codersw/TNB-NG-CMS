@@ -1,0 +1,28 @@
+.logo{
+  display: inline-block;
+  background: url('~src/assets/logo.svg')no-repeat center center;
+  background-size: cover;
+  margin: 20px;
+  width: 44px;
+  height: 44px;
+  animation: rotate 6s linear 0s infinite normal running;
+  transform-origin: center center;
+}
+.logo:hover{
+  animation-play-state: paused;
+}
+.sys-name{
+  font-size: 16px;
+  color: #fff;
+  margin: 40px 0 0;
+  display: inline-block;
+  vertical-align: top;
+}
+@keyframes rotate{
+  from{
+    transform: rotateZ(0deg)
+  }
+  to{
+    transform: rotateZ(360deg)
+  }
+}

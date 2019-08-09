@@ -1,0 +1,23 @@
+<nz-layout>
+  <!--  nzCollapsed是折叠状态,nzTrigger是菜单下部折叠等于null表示不显示-->
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <app-logo [isCollapsed]="isCollapsed"></app-logo>
+    <app-sider [isCollapsed]="isCollapsed"></app-sider>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <app-header (nzCollapsed)="launchSidebar()"></app-header>
+    </nz-header>
+    <nz-content>
+      <nz-breadcrumb>
+          <app-breadcrumb></app-breadcrumb>
+      </nz-breadcrumb>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <app-footer></app-footer>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

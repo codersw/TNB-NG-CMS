@@ -1,15 +1,16 @@
 {
   "name": "ng-cms",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --port 4100 --host 192.168.4.162",
+    "build": "ng build --prod --base-href ./ --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
@@ -22,7 +23,8 @@
     "ng-zorro-antd": "^8.1.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@delon/auth": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.802.0",
