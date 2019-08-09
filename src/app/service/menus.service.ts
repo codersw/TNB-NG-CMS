@@ -8,23 +8,6 @@ export class MenusService {
   private readonly Menus: Menu[];
   constructor() {
     this.Menus = [
-      // {
-      //   text: 'welcome',
-      //   link: 'index',
-      //   icon: 'home',
-      //   children: [
-      //     {
-      //       text: 'Hi',
-      //       link: 'welcome/hi',
-      //       icon: '',
-      //     },
-      //     {
-      //       text: 'table',
-      //       link: 'welcome/table',
-      //       icon: '',
-      //     }
-      //   ]
-      // },
       {
         text: '实时数据',
         link: 'actual/index',

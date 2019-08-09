@@ -1,19 +1,13 @@
 <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-    <li nz-submenu nzTitle="User" nzIcon="user">
+  <ng-container *ngFor="let menu of menu.getMenus()">
+    <li nz-submenu *ngIf="menu.children.length" [nzTitle]="menu.text" [nzIcon]="menu.icon">
       <ul>
-        <li nz-menu-item>Tom</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul>
+        <li nz-menu-item *ngFor="let children of menu.children" [routerLink]="[children.link]">{{children.text}}</li>
+      </ul> 
     </li>
-    <li nz-submenu nzTitle="Team" nzIcon="team">
-      <ul>
-        <li nz-menu-item>Team 1</li>
-        <li nz-menu-item>Team 2</li>
-      </ul>
+    <li nz-menu-item *ngIf="menu.children.length === 0" [routerLink]="[menu.link]">
+      <i nz-icon [nzType]="menu.icon"></i>
+      <span>{{menu.text}}</span>
     </li>
-    <li nz-menu-item>
-      <i nz-icon nzType="file"></i>
-      <span>File</span>
-    </li>
+  </ng-container>
 </ul>
