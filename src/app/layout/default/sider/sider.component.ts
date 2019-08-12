@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenusService } from '../../../service/menus.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { MenusService } from '../../../service/menus.service';
   templateUrl: './sider.component.html',
   styleUrls: ['./sider.component.less']
 })
-export class SiderComponent implements OnInit{
+export class SiderComponent implements OnInit {
   @Input()
   isCollapsed: boolean;
   constructor(
