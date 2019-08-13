@@ -2,11 +2,11 @@
 
 本项目为个人练习angular cli搭建,仅供参考学习。
 ## 准备工作
-###安装 angular cli环境
+### 安装 angular cli环境
   `
   npm install @angular/cli -g
   `
-##安装 ng-zorro 依赖
+## 安装 ng-zorro 依赖
   `
   npm install ng-zorro-antd -g
   `
