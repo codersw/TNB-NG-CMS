@@ -1,4 +1,4 @@
-# 基于angular cli 、ng-alain、 ng-zorro的后台管理系统
+# 基于angular cli 、 ng-zorro 、ng-alain的后台管理系统
 
 本项目为个人练习angular cli搭建,仅供参考学习。
 ## 准备工作
@@ -27,6 +27,9 @@
 ### 运行项目  
   `
     git clone https://github.com/codersw/ng-cms
+  `  
+  `
+    npm install
   `  
   `
    ng s --proxy-config proxy.config.json --port 4123 --host 192.168.4.162 --open
