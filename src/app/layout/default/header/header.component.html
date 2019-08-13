@@ -1,6 +1,32 @@
-<i
-  class="trigger"
-  nz-icon
-  [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-  (click)="changeIcon()"
-></i>
+<div class="dw-user">
+  <div class="dw-inter-change">
+    <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="changeIcon()"></i>
+  </div>
+  <div class="dw-inter">
+    <div>
+      <label>{{weathers?.city}} {{weathers?.data[0].week}} {{weathers?.data[0].wea}}
+        温度：{{weathers?.data[0].tem}} 湿度：{{weathers?.data[0].humidity}} 空气质量：{{weathers?.data[0].air}}
+        当前风速：{{weathers?.data[0].win_speed}}</label>
+    </div>
+    <div class="dw-inter-item"  nz-dropdown
+         nzPlacement="bottomRight"
+         [nzDropdownMenu]="userMenu">
+        <nz-avatar [nzSrc]="" nzSize="small"></nz-avatar>
+        管理员
+    </div>
+  </div>
+</div>
+
+<nz-dropdown-menu #userMenu="nzDropdownMenu">
+  <div nz-menu class="width-sm">
+    <div nz-menu-item routerLink="/pro/account/center">
+      <i nz-icon nzType="user" class="mr-sm"></i>
+      个人中心
+    </div>
+    <li nz-menu-divider></li>
+    <div nz-menu-item (click)="logout()">
+      <i nz-icon nzType="logout"></i>
+      退出
+    </div>
+  </div>
+</nz-dropdown-menu>

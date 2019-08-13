@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Menu} from '../model/menu';
+import { Menu } from '../model/menu';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenusService {
   private readonly Menus: Menu[];
-  constructor() {
+  constructor(private http: HttpService) {
     this.Menus = [
       {
         text: '系统管理',

@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DA_SERVICE_TOKEN, TokenService } from '@delon/auth';
-import { Router } from '@angular/router';
+import { LoginService } from '../../../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +13,10 @@ export class LoginComponent implements OnInit {
   error = '';
   loading = false;
   loadingdesc = '登录';
-  submitTime = new Date();
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService
+    private loginService: LoginService
   ) { }
-
   ngOnInit() {
     this.form = this.fb.group({
       userName: [null, [Validators.required]],
@@ -29,40 +25,8 @@ export class LoginComponent implements OnInit {
     });
   }
   submitForm() {
-    // const loginParams = {
-    //   userCode: this.userName.value,
-    //   password: this.password.value,
-    // };
     if (this.form.valid) {
-      // author
-      if (this.userName.value === 'admin' && this.password.value === '123456') {
-        this.tokenService.set({
-          token: 'admin',
-          loginIP: '192.168.1.68',
-          userId: '12',
-          loginCode: 'admin',
-          type: 'login',
-          time: +new Date(),
-          author: 'admin'
-        });
-        this.router.navigateByUrl('default');
-      }
-
-      // this.api.login(loginParams)
-      //   .subscribe(res => {
-      //     const data = res.data;
-      //       // 设置Token信息
-      //       this.tokenService.set({
-      //         token: data.token,
-      //         loginIP: data.loginIP,
-      //         userId: data.userId,
-      //         loginCode: data.loginCode,
-      //         type: 'login',
-      //         time: +new Date(),
-      //       }
-      //       );
-      //       this.router.navigateByUrl('default');
-      //   });
+      this.loginService.login(this.userName.value, this.password.value);
     }
   }
   get userName() { return this.form.controls.userName; }

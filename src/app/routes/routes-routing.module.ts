@@ -4,17 +4,18 @@ import { DefaultComponent } from '../layout/default/default.component';
 import { PassportComponent } from '../layout/passport/passport.component';
 import { SimpleGuard } from '@delon/auth';
 import { LoginComponent } from './passport/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'default',
-    pathMatch: 'full'
-  },
-  {
-    path: 'default',
     component: DefaultComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
+      { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) }
+    ],
     canActivate: [SimpleGuard]
   },
   {
@@ -25,7 +26,6 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent, data: { title: '登录' } }
     ]
   },
-  { path: 'login', redirectTo: 'passport/login' },
   { path: '**', redirectTo: 'exception/404' },
 ];
 

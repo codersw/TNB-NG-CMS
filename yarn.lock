@@ -505,11 +505,37 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@delon/acl@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.npm.taobao.org/@delon/acl/download/@delon/acl-8.3.0.tgz#632fc07a182c32c6ce56dc8ebb912c7925ffca17"
+  integrity sha1-Yy/AehgsMsbOVtyOu5EseSX/yhc=
+  dependencies:
+    "@delon/util" "^8.3.0"
+    tslib "^1.9.0"
+
 "@delon/auth@^8.3.0":
   version "8.3.0"
   resolved "https://registry.npm.taobao.org/@delon/auth/download/@delon/auth-8.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40delon%2Fauth%2Fdownload%2F%40delon%2Fauth-8.3.0.tgz#e88b2236beb7b9a0e72271c17a489d8b2964ea0c"
   integrity sha1-6IsiNr63uaDnInHBekidiylk6gw=
   dependencies:
+    tslib "^1.9.0"
+
+"@delon/theme@latest":
+  version "8.3.0"
+  resolved "https://registry.npm.taobao.org/@delon/theme/download/@delon/theme-8.3.0.tgz#256a4571f8ba47f385eab6aff2c48b3d2a0b23e2"
+  integrity sha1-JWpFcfi6R/OF6rav8sSLPSoLI+I=
+  dependencies:
+    "@delon/acl" "^8.3.0"
+    "@delon/util" "^8.3.0"
+    ng-zorro-antd "^8.1.2"
+    tslib "^1.9.0"
+
+"@delon/util@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.npm.taobao.org/@delon/util/download/@delon/util-8.3.0.tgz#26a2b33762646faa3674aa9c2e542163f8e20d6e"
+  integrity sha1-JqKzN2Jkb6o2dKqcLlQhY/jiDW4=
+  dependencies:
+    extend "^3.0.0"
     tslib "^1.9.0"
 
 "@ngtools/webpack@8.2.1":

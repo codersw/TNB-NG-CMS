@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherService } from '../../../service/weather.service';
+import {LoginService} from '../../../service/login.service';
 declare var returnCitySN: any;
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
   nzCollapsed = new EventEmitter<void>();
   weathers = null;
   constructor(
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
+    private loginService: LoginService
   ) {
   }
   ngOnInit() {
@@ -28,5 +30,8 @@ export class HeaderComponent implements OnInit {
   changeIcon() {
     this.isCollapsed = !this.isCollapsed;
     this.nzCollapsed.emit();
+  }
+  logout() {
+    this.loginService.logout();
   }
 }

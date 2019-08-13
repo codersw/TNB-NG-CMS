@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DelonABCModule } from '@delon/abc';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DwTableComponent } from './dw-table/dw-table.component';
 import { DwSearchComponent } from './dw-search/dw-search.component';
@@ -15,7 +16,8 @@ const SHAREDS = [
   ReactiveFormsModule,
   FormsModule,
   RouterModule,
-  NgZorroAntdModule
+  NgZorroAntdModule,
+  DelonABCModule
 ];
 const COMPONENTS = [
   DwTableComponent,
