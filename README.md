@@ -22,7 +22,7 @@
   ng add ng-zorro-antd
   `  
   `
-  语言包选择zh_CN,css选择less
+  语言包选择zh_CN,css选择less本项目直接跳过以上步骤
   `
 ### 运行项目  
   `
