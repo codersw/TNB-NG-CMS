@@ -6,13 +6,15 @@ const userList: User[] = [
     token: '1ambassadress',
     id: 1,
     nickName: '管理员',
-    userName: 'admin'
+    userName: 'admin',
+    avatar: './logo1.jpg'
   },
   {
     token: '1ambassadress',
     id: 2,
     nickName: '用户',
-    userName: 'user'
+    userName: 'user',
+    avatar: './logo1.jpg'
   }
 ];
 

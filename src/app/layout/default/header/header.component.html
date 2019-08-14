@@ -11,8 +11,8 @@
     <div class="dw-inter-item"  nz-dropdown
          nzPlacement="bottomRight"
          [nzDropdownMenu]="userMenu">
-        <nz-avatar [nzSrc]="" nzSize="small"></nz-avatar>
-        管理员
+        <nz-avatar [nzSrc]="this.settingsService.user.avatar" nzSize="small"></nz-avatar>
+      {{this.settingsService.user.nickName}}
     </div>
   </div>
 </div>

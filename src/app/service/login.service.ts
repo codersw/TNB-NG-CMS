@@ -3,6 +3,7 @@ import { HttpService } from './http.service';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, TokenService } from '@delon/auth';
 import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
+import { SettingsService } from '@delon/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class LoginService {
     private router: Router,
     private notification: NzNotificationService,
     private nzMessageService: NzMessageService,
+    private settingsService: SettingsService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService
   ) { }
   login(userName: string, password: string): void {
@@ -21,6 +23,7 @@ export class LoginService {
       res => {
         if (res.code > 0) {
           this.tokenService.set(res.data);
+          this.settingsService.setUser(res.data);
           this.router.navigateByUrl('dashboard');
         } else {
           this.nzMessageService.create('error', res.msg);

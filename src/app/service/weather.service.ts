@@ -11,7 +11,7 @@ export class WeatherService {
   ) { }
 
   weather(ip: any, callback): void {
-    this.http.jsonp('https://www.tianqiapi.com/api/?version=v1&ip=' + ip, 'callback').subscribe(
+    this.http.jsonp('https://www.tianqiapi.com/api/?version=v1&ip=' + ip, '', 'callback').subscribe(
       res => {
         callback(res);
       },

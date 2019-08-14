@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherService } from '../../../service/weather.service';
-import {LoginService} from '../../../service/login.service';
+import { LoginService } from '../../../service/login.service';
+import { SettingsService } from '@delon/theme';
 declare var returnCitySN: any;
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   weathers = null;
   constructor(
     private weatherService: WeatherService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private settingsService: SettingsService
   ) {
   }
   ngOnInit() {

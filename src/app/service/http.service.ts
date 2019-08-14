@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { HttpHeaders} from '@angular/common/http';
+import { HttpHeaders, HttpClient} from '@angular/common/http';
 import { _HttpClient } from '@delon/theme';
 import { Observable } from 'rxjs';
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -94,9 +94,10 @@ export class HttpService {
   /**
    *  跨域请求
    * @param url 请求地址
+   * @param params 参数
    * @param callback jsonp回调函数
    */
-  jsonp(url: string, callback: string): Observable<any> {
-    return this.http.jsonp(url, callback);
+  jsonp(url: string, params?: any, callback: string = 'callback'): Observable<any> {
+    return this.http.jsonp(url, params , callback);
   }
 }
