@@ -75,6 +75,7 @@
 > * shared   项目公用引用
 > * styles   项目通用样式
 > * assets   项目静态资源
+> * _mock    项目模拟请求
 > * environments 环境参数
 
 ## 项目部署
