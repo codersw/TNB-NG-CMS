@@ -11,13 +11,16 @@ import { IconsProviderModule } from './icons-provider.module';
 import { environment } from '../environments/environment';
 import { API_URL } from './service/http.service';
 import { DelonAuthModule, SimpleInterceptor, DelonAuthConfig } from '@delon/auth';
+import { DelonMockModule } from '@delon/mock';
+import { DefaultInterceptor } from './interceptor/default.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { CommonModule, HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
-
 registerLocaleData(zh);
+import * as MOCKDATA from '../../_mock';
+const MOCKMODULE = !environment.production ? [ DelonMockModule.forRoot({ data: MOCKDATA }) ] : [];
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ registerLocaleData(zh);
     CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    DelonAuthModule
+    DelonAuthModule,
+    ...MOCKMODULE
   ],
   providers: [
     // 国际化支持
@@ -45,6 +49,8 @@ registerLocaleData(zh);
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     // 指定认证风格对应的HTTP拦截器
     { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
+    // 自定义拦截器
+    { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true},
     // 重写权限配置
     { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
     // 读取配置的实际地址

@@ -23,6 +23,7 @@
     "@delon/abc": "latest",
     "@delon/auth": "^8.3.0",
     "@delon/chart": "^8.3.0",
+    "@delon/mock": "^8.3.0",
     "@delon/theme": "latest",
     "ng-zorro-antd": "^8.1.2",
     "rxjs": "~6.4.0",

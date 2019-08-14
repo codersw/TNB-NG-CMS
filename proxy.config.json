@@ -1,5 +1,5 @@
 {
-  "/virtual_data_handler/":{
-    "target":"http://192.168.4.162:8080/virtual_data_handler/"
+  "/":{
+    "target":"http://192.168.4.162:8080/"
   }
 }

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  urlPrefix: ''
+  serverUrl: './',
+  urlPrefix: '',
+  useHash: true
 };
 
 /*

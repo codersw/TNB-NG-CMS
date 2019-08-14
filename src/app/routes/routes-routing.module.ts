@@ -5,7 +5,7 @@ import { PassportComponent } from '../layout/passport/passport.component';
 import { SimpleGuard } from '@delon/auth';
 import { LoginComponent } from './passport/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-
+import { environment } from '../../environments/environment';
 
 const routes: Routes = [
   {
@@ -30,7 +30,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: environment.useHash,
+    scrollPositionRestoration: 'top',
+  })],
   exports: [RouterModule]
 })
 export class RoutesRoutingModule { }

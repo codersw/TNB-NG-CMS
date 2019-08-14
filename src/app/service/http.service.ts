@@ -1,8 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpHeaders} from '@angular/common/http';
+import { _HttpClient } from '@delon/theme';
 import { Observable } from 'rxjs';
-import { NzNotificationService } from 'ng-zorro-antd';
-
 export const API_URL = new InjectionToken<string>('apiUrl');
 export interface HeaderParam {
   key: string;
@@ -14,9 +13,8 @@ export interface HeaderParam {
 export class HttpService {
 
   constructor(
-    private http: HttpClient,
-    @Inject(API_URL) public urlPrefix,
-    private notification: NzNotificationService
+    private http: _HttpClient,
+    @Inject(API_URL) public urlPrefix
   ) { }
 
   /**
@@ -25,8 +23,8 @@ export class HttpService {
    * @param  params      请求参数
    * @param  credentials 请求是否携带cookie
    */
-  get<T>(url: string, params: any, credentials: boolean = true): Observable<any> {
-    if (params) {
+  get<T>(url: string, params: any = null, credentials: boolean = true): Observable<any> {
+    if (params != null) {
       let parameter = '?';
       Object.keys(params).forEach((i) => {
         parameter += i + '=' + params[i] + '&';
@@ -45,7 +43,7 @@ export class HttpService {
    */
   post<T>(url: string, params: any, headers?: Array<HeaderParam>, credentials: boolean = true): Observable<any> {
     const param = {
-      'Content-Type': 'text/plain'
+      'Content-Type': 'application/json'
     };
     if (headers !== undefined) {
       headers.forEach((val) => {
@@ -54,8 +52,7 @@ export class HttpService {
     }
     const httpHeaders: HttpHeaders = new HttpHeaders(param);
     return this.http.post<T>(
-      this.urlPrefix + url,
-      JSON.stringify(params),
+      this.urlPrefix + url, params,
       {
         headers: httpHeaders,
         withCredentials: credentials
@@ -72,11 +69,7 @@ export class HttpService {
    * @param  credentials 请求是否携带cookie
    */
   request(method: 'get' | 'post', url: string, params: any, header?: HttpHeaders, credentials: boolean = true): Observable<any> {
-    const req = new HttpRequest(method, this.urlPrefix + url, params, {
-      headers: header,
-      withCredentials: credentials
-    });
-    return this.http.request(req);
+    return this.http.request(method, this.urlPrefix + url, { headers: header, withCredentials: credentials});
   }
 
   /**
@@ -106,24 +99,4 @@ export class HttpService {
   jsonp(url: string, callback: string): Observable<any> {
     return this.http.jsonp(url, callback);
   }
-
-  /**
-   * 请求验证
-   * @param e 服务器返回数据
-   */
-  callbackCode(e: { resCode: any; resMsg: string; }) {
-    switch (e.resCode) {
-      case '01' || '02' || '03':
-        this.notification.create('warning', '系统提示',
-          e.resMsg);
-        break;
-      case '04':
-        this.notification.create('error', '系统提示',
-          e.resMsg);
-        break;
-      default:
-        return e;
-    }
-  }
-
 }
