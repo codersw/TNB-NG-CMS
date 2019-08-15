@@ -1,5 +1,6 @@
 export const environment = {
-  production: true,
+  // 暂时写死false为了mock
+  production: false,
   serverUrl: './',
   urlPrefix: '',
   useHash: true
