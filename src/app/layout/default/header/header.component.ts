@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private weatherService: WeatherService,
     private loginService: LoginService,
-    private settingsService: SettingsService
+    public settingsService: SettingsService
   ) {
   }
   ngOnInit() {

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json --port 4123 --host 192.168.4.162 --open",
-    "build": "ng build --prod --base-href ./ --output-hashing=none",
+    "build": "ng build --prod --aot --base-href ./ --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

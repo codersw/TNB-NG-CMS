@@ -10,7 +10,7 @@ export class SiderComponent implements OnInit {
   @Input()
   isCollapsed: boolean;
   constructor(
-    private menu: MenusService
+    public menu: MenusService
   ) { }
 
   ngOnInit(): void {
