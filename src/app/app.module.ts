@@ -45,7 +45,7 @@ const MOCKMODULE = !environment.production ? [ DelonMockModule.forRoot({ data: M
   providers: [
     // 国际化支持
     { provide: NZ_I18N, useValue: zh_CN },
-    // 缓存开启
+    // LocationStrategy策略
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     // 指定认证风格对应的HTTP拦截器
     { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
