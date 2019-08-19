@@ -136,8 +136,12 @@ const data: any[] = [
 export const Table = {
   'POST /list': (req: MockRequest) => {
     return {
-      count: data.length,
-      list: data
+      code: 1,
+      msg: 'ok',
+      data: {
+        count: data.length,
+        list: data
+      }
     };
   }
 }

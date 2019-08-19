@@ -12,7 +12,7 @@ export class MenusService {
       {
         text: '测试列表',
         link: 'table',
-        icon: 'setting',
+        icon: 'profile',
         children: [
           {
             text: '测试列表',

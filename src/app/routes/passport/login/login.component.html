@@ -1,18 +1,16 @@
 <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="userNameError">
       <nz-input-group [nzPrefix]="prefixUser">
           <input type="text" nz-input placeholder="Enter your username"  formControlName="userName" >
       </nz-input-group>
-      <nz-form-explain *ngIf="form.get('userName').dirty && form.get('userName').errors">请输入用户名</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="passwordError">
       <nz-input-group [nzPrefix]="prefixLock">
          <input type="password" nz-input formControlName="password" placeholder="Enter your password">
       </nz-input-group>
-      <nz-form-explain *ngIf="form.get('password').dirty && form.get('password').errors">请输入密码</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
@@ -23,3 +21,13 @@
 </form>
 <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
 <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+<ng-template #userNameError let-control>
+  <ng-container *ngIf="form.get('userName').dirty && form.get('userName').errors">
+    请输入用户名
+  </ng-container>
+</ng-template>
+<ng-template #passwordError let-control>
+  <ng-container *ngIf="form.get('password').dirty && form.get('password').errors">
+    请输入密码
+  </ng-container>
+</ng-template>

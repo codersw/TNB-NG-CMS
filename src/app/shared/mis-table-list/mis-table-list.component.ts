@@ -1,4 +1,15 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, TemplateRef, Type, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  TemplateRef,
+  Type,
+  ViewChild
+} from '@angular/core';
 import {NzMessageService} from 'ng-zorro-antd';
 import {STChange, STColumn, STComponent, STData} from '@delon/abc';
 
@@ -8,7 +19,7 @@ import {STChange, STColumn, STComponent, STData} from '@delon/abc';
   templateUrl: './mis-table-list.component.html',
   styleUrls: ['./mis-table-list.component.less']
 })
-export class MisTableListComponent implements OnInit {
+export class MisTableListComponent implements OnInit, AfterViewInit {
 
   // 显示加载中
   loading = false;
@@ -17,12 +28,13 @@ export class MisTableListComponent implements OnInit {
   @Input()
   dict: any;
   @Input()
-  table: Table;
+  column: any[];
   @Input()
   showIndex = false;
   @ViewChild('st', { static: true })
   st: STComponent;
   columns: STColumn[] = [];
+  @Input()
   data: any[];
   totalCallNo = 0;
   constructor(
@@ -43,10 +55,14 @@ export class MisTableListComponent implements OnInit {
     }
   }
   ngOnInit() {
-    console.log(this.table);
-    if (this.table.column) {
-      console.log(this.columns);
-      this.table.column.forEach( e => {
+    if (this.column) {
+      if (this.showIndex) {
+        this.columns.push({
+          title: '#',
+          type: 'no'
+        });
+      }
+      this.column.forEach( e => {
         if (e.hasOwnProperty('sort')) {
           let st = {};
           const sn = e.sort === 'ascend' ? 0 : 1;
@@ -62,7 +78,8 @@ export class MisTableListComponent implements OnInit {
         this.columns.push(e);
       });
     }
-    console.log(this.columns);
+  }
+  ngAfterViewInit() {
   }
 }
 export interface Table {
