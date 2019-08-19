@@ -4,9 +4,7 @@ import { DefaultComponent } from '../layout/default/default.component';
 import { PassportComponent } from '../layout/passport/passport.component';
 import { SimpleGuard } from '@delon/auth';
 import { LoginComponent } from './passport/login/login.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { environment } from '../../environments/environment';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
@@ -14,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
+      { path: 'table', loadChildren: () => import('./table/table.module').then( m => m.TableModule) },
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) }
     ],
     canActivate: [SimpleGuard]
@@ -30,10 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    useHash: environment.useHash,
-    scrollPositionRestoration: 'top',
-  })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class RoutesRoutingModule { }

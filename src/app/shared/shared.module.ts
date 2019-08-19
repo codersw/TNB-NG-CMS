@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DelonABCModule } from '@delon/abc';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import {MisTableListComponent} from './mis-table-list/mis-table-list.component';
 
 const SHAREDS = [
   CommonModule,
@@ -14,6 +15,7 @@ const SHAREDS = [
   DelonABCModule
 ];
 const COMPONENTS = [
+  MisTableListComponent
 ];
 @NgModule({
   imports: [
@@ -25,6 +27,6 @@ const COMPONENTS = [
   exports: [
     ...SHAREDS,
     ...COMPONENTS
-  ]
+]
 })
 export class SharedModule { }

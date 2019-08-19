@@ -10,23 +10,35 @@ export class MenusService {
   constructor(private http: HttpService) {
     this.Menus = [
       {
+        text: '测试列表',
+        link: 'table',
+        icon: 'setting',
+        children: [
+          {
+            text: '测试列表',
+            link: '/table/testtable',
+            icon: '',
+          }
+        ]
+      },
+      {
         text: '系统管理',
         link: 'system-mmt',
         icon: 'setting',
         children: [
           {
             text: '用户管理',
-            link: 'system-mmt/user',
+            link: '/system-mmt/user',
             icon: '',
           },
           {
             text: '角色管理',
-            link: 'system-mmt/role',
+            link: '/system-mmt/role',
             icon: '',
           },
           {
             text: '菜单管理',
-            link: 'system-mmt/menu',
+            link: '/system-mmt/menu',
             icon: '',
           }
         ]

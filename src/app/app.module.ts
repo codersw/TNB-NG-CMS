@@ -16,7 +16,7 @@ import { DefaultInterceptor } from './interceptor/default.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-import { CommonModule, HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 import * as MOCKDATA from '../../_mock';
@@ -45,8 +45,6 @@ const MOCKMODULE = !environment.production ? [ DelonMockModule.forRoot({ data: M
   providers: [
     // 国际化支持
     { provide: NZ_I18N, useValue: zh_CN },
-    // LocationStrategy策略
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
     // 指定认证风格对应的HTTP拦截器
     { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
     // 自定义拦截器
@@ -54,7 +52,8 @@ const MOCKMODULE = !environment.production ? [ DelonMockModule.forRoot({ data: M
     // 重写权限配置
     { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
     // 读取配置的实际地址
-    { provide: API_URL, useValue: environment.urlPrefix }
+    { provide: API_URL, useValue: environment.urlPrefix },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [
     AppComponent
