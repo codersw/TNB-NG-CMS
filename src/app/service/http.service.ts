@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { HttpHeaders, HttpClient} from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { _HttpClient } from '@delon/theme';
 import { Observable } from 'rxjs';
 export const API_URL = new InjectionToken<string>('apiUrl');
