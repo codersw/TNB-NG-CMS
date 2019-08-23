@@ -1,6 +1,6 @@
-<nz-card [nzBordered]="false">
-  <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
-    <ng-template *ngIf="showIndex" let-index="index">
+<nz-card [nzBordered]="true">
+  <st #st [columns]="table.column" [data]="table.data" [loading]="loading" (change)="stChange($event)" [total]="table.total">
+    <ng-template *ngIf="table.showIndex" let-index="index">
     </ng-template>
   </st>
 </nz-card>

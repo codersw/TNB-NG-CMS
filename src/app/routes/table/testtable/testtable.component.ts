@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {TableService} from '../../../service/table.service';
+import {Table} from '../../../model/table';
 
 @Component({
   selector: 'app-testtable',
@@ -7,7 +8,7 @@ import {TableService} from '../../../service/table.service';
   styleUrls: ['./testtable.component.less']
 })
 export class TesttableComponent implements OnInit, AfterViewInit {
-  table: any = {};
+  table = new Table();
   constructor(
    private tableService: TableService
   ) { }
@@ -23,11 +24,12 @@ export class TesttableComponent implements OnInit, AfterViewInit {
       { title: '手机号', index: 'mobile'},
       { title: '部门', index: 'OrgName'},
       {
-        title: '在职状态', index: 'ZaiZhiZhuangTai', render: 'status',
+        title: '在职状态', index: 'ZaiZhiZhuangTai',
         filter: {
           menus: this.ZaiZhiZhuangTai,
-          fn: (filter: any, record: any) => record.status === filter.index,
+          fn: (filter: any, record: any) => record.ZaiZhiZhuangTai === filter.index,
         },
+        format: (item: any) => this.ZaiZhiZhuangTai.find( e => e.index === item.ZaiZhiZhuangTai).text
       },
       { title: '入职日期', index: 'RzRuzhiDate' },
       {
@@ -46,6 +48,7 @@ export class TesttableComponent implements OnInit, AfterViewInit {
     ];
     this.tableService.list(null, res => {
       this.table.data = res.list;
+      this.table.total = res.count;
     });
   }
   ngAfterViewInit() {

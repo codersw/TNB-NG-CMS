@@ -1,17 +1,8 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  TemplateRef,
-  Type,
-  ViewChild
-} from '@angular/core';
-import {NzMessageService} from 'ng-zorro-antd';
-import {STChange, STColumn, STComponent, STData} from '@delon/abc';
+// tslint:disable-next-line:max-line-length
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, TemplateRef, Type, ViewChild } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
+import { STChange, STColumn, STComponent, STData } from '@delon/abc';
+import {Table} from '../../model/table';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -28,14 +19,9 @@ export class MisTableListComponent implements OnInit, AfterViewInit {
   @Input()
   dict: any;
   @Input()
-  column: any[];
-  @Input()
-  showIndex = false;
+  table = new Table();
   @ViewChild('st', { static: true })
   st: STComponent;
-  columns: STColumn[] = [];
-  @Input()
-  data: any[];
   totalCallNo = 0;
   constructor(
     public msg: NzMessageService,
@@ -55,35 +41,8 @@ export class MisTableListComponent implements OnInit, AfterViewInit {
     }
   }
   ngOnInit() {
-    if (this.column) {
-      if (this.showIndex) {
-        this.columns.push({
-          title: '#',
-          type: 'no'
-        });
-      }
-      this.column.forEach( e => {
-        if (e.hasOwnProperty('sort')) {
-          let st = {};
-          const sn = e.sort === 'ascend' ? 0 : 1;
-          sn === 0 ? st = {
-            default: 'ascend',
-            compare: (a: any, b: any) => a[e.index] - b[e.index]
-          } : st = {
-            default: 'descend',
-            compare: (a: any, b: any) => b[e.index] - a[e.index]
-          };
-          e.sort = st;
-        }
-        this.columns.push(e);
-      });
-    }
   }
   ngAfterViewInit() {
   }
 }
-export interface Table {
-  data: any;
-  column: any;
-  dict: any;
-}
+

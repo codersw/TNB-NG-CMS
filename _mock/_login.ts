@@ -7,14 +7,14 @@ const userList: User[] = [
     id: 1,
     nickName: '管理员',
     userName: 'admin',
-    avatar: './assets/logo1.jpg'
+    avatar: '/assets/logo1.jpg'
   },
   {
     token: '1ambassadress',
     id: 2,
     nickName: '用户',
     userName: 'user',
-    avatar: './assets/logo1.jpg'
+    avatar: '/assets/logo1.jpg'
   }
 ];
 
