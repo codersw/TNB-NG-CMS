@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {TableService} from '../../../service/table.service';
 import {Table} from '../../../model/table';
+import {MisTableListComponent} from '../../../shared/mis-table-list/mis-table-list.component';
 
 @Component({
   selector: 'app-testtable',
@@ -9,6 +10,8 @@ import {Table} from '../../../model/table';
 })
 export class TesttableComponent implements OnInit, AfterViewInit {
   table = new Table();
+  @ViewChild('tl', { static: true })
+  tl: MisTableListComponent;
   constructor(
    private tableService: TableService
   ) { }
@@ -46,10 +49,18 @@ export class TesttableComponent implements OnInit, AfterViewInit {
         ],
       },
     ];
-    this.tableService.list(null, res => {
+    this.tableService.list({ pageindex: 0, pagesize: 10 }, res => {
       this.table.data = res.list;
       this.table.total = res.count;
+      this.table.page = {};
+      this.table.page.showSize = true;
+      this.table.page.showQuickJumper = true;
+      this.table.page.zeroIndexed = true;
+      this.table.page.total = true;
     });
+  }
+  page(param: any): void {
+    console.log(param);
   }
   ngAfterViewInit() {
   }

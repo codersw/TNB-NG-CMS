@@ -2,7 +2,7 @@ export class Menu {
   /** 主键 */
   key?: string;
   /** 文本 */
-  text: string;
+  text!: string;
   /** 路由 */
   link?: string;
   /** 跳转方式 */

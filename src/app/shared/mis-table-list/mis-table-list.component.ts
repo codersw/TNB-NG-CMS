@@ -19,7 +19,9 @@ export class MisTableListComponent implements OnInit, AfterViewInit {
   @Input()
   dict: any;
   @Input()
-  table = new Table();
+  table: Table;
+  @Output()
+  page = new EventEmitter<any>();
   @ViewChild('st', { static: true })
   st: STComponent;
   totalCallNo = 0;
@@ -38,9 +40,12 @@ export class MisTableListComponent implements OnInit, AfterViewInit {
         break;
       case 'filter':
         break;
+      case 'pi':
+        this.page.emit({ pageindex: e.pi, pagesize: e.ps});
     }
   }
   ngOnInit() {
+    console.log(this.table);
   }
   ngAfterViewInit() {
   }

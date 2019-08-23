@@ -135,12 +135,13 @@ const data: any[] = [
 ];
 export const Table = {
   'POST /list': (req: MockRequest) => {
+    const param = req.body;
     return {
       code: 1,
       msg: 'ok',
       data: {
         count: data.length,
-        list: data
+        list: data.splice(param.pageindex, param.pagesize)
       }
     };
   }
