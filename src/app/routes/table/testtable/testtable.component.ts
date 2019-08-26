@@ -10,8 +10,6 @@ import {MisTableListComponent} from '../../../shared/mis-table-list/mis-table-li
 })
 export class TesttableComponent implements OnInit, AfterViewInit {
   table = new Table();
-  @ViewChild('tl', { static: true })
-  tl: MisTableListComponent;
   constructor(
    private tableService: TableService
   ) { }
@@ -20,6 +18,15 @@ export class TesttableComponent implements OnInit, AfterViewInit {
     { index: 2, text: '离职', value: false, type: 'error', checked: false }
   ];
   ngOnInit() {
+    this.reload(1, 10);
+  }
+  page(param: any): void {
+    console.log(param);
+    this.reload(param.pi, param.ps);
+  }
+  ngAfterViewInit() {
+  }
+  reload( pageindex: number, pagesize: number): void {
     this.table.column = [
       { title: '行号', type: 'no' },
       { title: '工号', index: 'UserId'},
@@ -49,19 +56,13 @@ export class TesttableComponent implements OnInit, AfterViewInit {
         ],
       },
     ];
-    this.tableService.list({ pageindex: 0, pagesize: 10 }, res => {
+    this.tableService.list( { pageindex, pagesize}, res => {
       this.table.data = res.list;
       this.table.total = res.count;
-      this.table.page = {};
       this.table.page.showSize = true;
       this.table.page.showQuickJumper = true;
       this.table.page.zeroIndexed = true;
       this.table.page.total = true;
     });
-  }
-  page(param: any): void {
-    console.log(param);
-  }
-  ngAfterViewInit() {
   }
 }

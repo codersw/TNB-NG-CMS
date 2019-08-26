@@ -133,6 +133,10 @@ const data: any[] = [
     isyunying: false
   }
 ];
+function getlist(param) {
+  const dd = data;
+  return dd.splice((param.pageindex - 1 ) * param.pagesize, param.pagesize);
+}
 export const Table = {
   'POST /list': (req: MockRequest) => {
     const param = req.body;
@@ -141,7 +145,7 @@ export const Table = {
       msg: 'ok',
       data: {
         count: data.length,
-        list: data.splice(param.pageindex, param.pagesize)
+        list: getlist(param)
       }
     };
   }
